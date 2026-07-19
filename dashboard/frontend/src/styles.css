@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* Design tokens — dashboard palette from "AIgnition Dashboard.dc.html",
+   landing palette from "Landing.dc.html". */
+@theme {
+  /* dashboard (light cream — unified with the landing palette) */
+  --color-dbg: #faf6ef;
+  --color-dside: #fdfcf9;
+  --color-dcard: #fdfcf9;
+  --color-dline: #e6dfd2;
+  --color-dcardline: #e6dfd2;
+  --color-dstrong: #d9d1c0;
+  --color-drow: #efe8da;
+  --color-dtext: #141b33;
+  --color-dtext2: #5a5344;
+  --color-dmuted: #8a8271;
+  --color-dghost: #3c435c;
+  --color-dbody: #3c435c;
+  --color-flame: #e8560f;
+  --color-flame-hover: #f2703a;
+  --color-alertbg: #fdf0e8;
+  --color-alerttitle: #b23c05;
+  --color-alertbody: #7a4a30;
+  --color-rowhl: #fdf0e8;
+  --color-google: #2b49c4;
+  --color-metac: #7a4fc0;
+  --color-microsoft: #0f8f6b;
+  --color-pos: #1a8f4d;
+  --color-neg: #c2402f;
+
+  /* landing (cream) */
+  --color-cream: #faf6ef;
+  --color-paper: #fdfcf9;
+  --color-ink: #141b33;
+  --color-ink2: #3c435c;
+  --color-sand: #e6dfd2;
+  --color-sand2: #d9d1c0;
+  --color-clay: #5a5344;
+  --color-dune: #8a8271;
+  --color-blue: #2b49c4;
+  --color-grape: #7a4fc0;
+  --color-flame: #e8560f;
+  --color-navy: #141b33;
+  --color-navy2: #1a2340;
+  --color-navyline: #2a3355;
+  --color-navyline2: #3a4364;
+  --color-mist: #aab1c9;
+  --color-peach: #f0925f;
+  --color-periwinkle: #8fa2e8;
+
+  --font-instrument: "Instrument Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --animate-pulse-soft: pulse-soft 2s infinite;
+  --animate-pulse-fast: pulse-soft 1.2s infinite;
+  --animate-spectrum: spectrum 8s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.4s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.2s ease-out both;
+  --animate-drawer-in: drawer-in 0.25s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+
+  @keyframes pulse-soft {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+  }
+  @keyframes spectrum {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes drawer-in {
+    from { transform: translateX(-100%); }
+    to { transform: none; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- scroll-reveal (Sarvam-style staggered fade-up) ---- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .animate-spectrum, .animate-pulse-soft, .animate-pulse-fast,
+  .animate-fade-up, .animate-fade-in, .animate-drawer-in { animation: none; }
+}

@@ -1,0 +1,32 @@
+# Secrets
+.env
+.env.*
+*_key.txt
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.venv/
+venv/
+
+# Test / runtime output
+output/
+*.log
+
+# Frontend
+dashboard/frontend/node_modules/
+dashboard/frontend/dist/
+dashboard/frontend/*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NOTE: pickle/model.pkl IS committed on purpose (the grader does not retrain).
