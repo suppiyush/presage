@@ -28,4 +28,4 @@ python -m src.predict --features "$FEATURES_PATH" --model "$MODEL_PATH" --output
 
 echo "== done: $OUTPUT_PATH =="
 echo ""
-echo "Live dashboard -> https://presage-two.vercel.app/"
+echo "Live dashboard -> https://presage-mu.vercel.app/"
