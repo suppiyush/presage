@@ -1,23 +1,25 @@
 {
+  "$schema": "https://schema.railpack.com",
   "packages": {
     "python": "3.12",
     "node": "22"
   },
-  "phases": {
+  "steps": {
     "install": {
-      "cmds": [
+      "commands": [
         "python -m venv /app/.venv",
         "/app/.venv/bin/pip install -r backend/requirements.txt",
         "cd frontend && npm install"
       ]
     },
     "build": {
-      "cmds": [
+      "inputs": [{ "step": "install" }],
+      "commands": [
         "cd frontend && npm run build"
       ]
     }
   },
   "deploy": {
-    "startCmd": "/app/.venv/bin/python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
+    "startCommand": "/app/.venv/bin/python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
   }
 }
