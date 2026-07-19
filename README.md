@@ -103,9 +103,3 @@ Together, P10 and P90 form an 80% confidence band. Raw quantile models tend to p
 Because spend is a model input, we can vary it to generate budget-response curves and find the allocation that maximizes expected ROAS across channels.
 
 > **Note on `data/`:** the committed folder contains the real campaign CSVs (Google, Meta, Bing) that the model is trained on. The grader overwrites this folder with held-out data and re-runs the pipeline via `run.sh`.
-
-## Honest limitations
-
-- Multi-step forecasts are **recursive**: each future week's lag/rolling features come from the model's own P50 path, so weekly forecasts evolve instead of staying flat. P10/P90 are predicted conditional on that median path, and weekly bands are calibrated one-step-ahead. Full uncertainty propagation through the recursion is the remaining next step.
-- Period bands aggregate weekly quantiles using the empirically estimated week-to-week residual correlation rather than a plain sum. A plain sum assumes perfectly correlated weeks and overstates the band. Cross-group rollups (channel/aggregate rows) still use plain sums, which is the conservative direction.
-- The optimizer is confined to +/-40% of the current plan. Outside historically observed spend, the model extrapolates and its claims are not trustworthy.
