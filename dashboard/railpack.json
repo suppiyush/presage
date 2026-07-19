@@ -4,7 +4,7 @@
       "cmds": ["pip install -r backend/requirements.txt"]
     }
   },
-  "start": {
-    "cmd": "uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
+  "deploy": {
+    "startCmd": "uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
   }
 }
