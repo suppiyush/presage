@@ -2,8 +2,10 @@ import type {
   Allocation, Anomalies, Budgets, Forecast, Meta, Narrative, Simulator,
 } from "../types";
 
+const BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "";
+
 async function request<T>(url: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(url, init);
+  const res = await fetch(`${BASE}${url}`, init);
   if (!res.ok) {
     throw new Error(`${init?.method ?? "GET"} ${url} failed: ${res.status}`);
   }
