@@ -5,16 +5,16 @@
     "node": "22"
   },
   "steps": {
-    "install": {
+    "build": {
       "commands": [
         "python -m venv /app/.venv",
-        "/app/.venv/bin/pip install -r /app/backend/requirements.txt",
-        "cd frontend && npm install"
+        "/app/.venv/bin/pip install -r backend/requirements.txt",
+        "npm --prefix frontend install",
+        "npm --prefix frontend run build"
       ]
-    },
-    "build": {
-      "inputs": [{ "step": "install" }],
-      "commands": ["cd frontend && npm run build"]
     }
+  },
+  "deploy": {
+    "startCommand": "/app/.venv/bin/python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
   }
 }
