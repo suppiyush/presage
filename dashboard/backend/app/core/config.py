@@ -17,13 +17,12 @@ class Settings:
     data_dir: str = str(REPO_ROOT / "data")
     frontend_dist: Path = REPO_ROOT / "dashboard" / "frontend" / "dist"
 
-    # Set CORS_ORIGINS to "*" to allow all origins, or a comma-separated list
-    # of specific origins (e.g. your Vercel URL). Falls back to the Vite dev server.
+    # Set CORS_ORIGINS to a comma-separated list of specific origins to restrict
+    # access (e.g. your Vercel URL). Defaults to "*" (allow all).
     cors_origins: list[str] = (
-        ["*"] if _env_origins.strip() == "*"
-        else [o.strip() for o in _env_origins.split(",") if o.strip()]
-        if _env_origins
-        else ["http://localhost:5173", "http://127.0.0.1:5173"]
+        [o.strip() for o in _env_origins.split(",") if o.strip()]
+        if _env_origins and _env_origins.strip() != "*"
+        else ["*"]
     )
 
     trailing_weeks: int = 4  # window used for "recent actuals" comparisons
