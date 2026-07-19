@@ -1,4 +1,7 @@
 {
+  "packages": {
+    "python": "3.12"
+  },
   "phases": {
     "install": {
       "cmds": ["pip install -r backend/requirements.txt"]
