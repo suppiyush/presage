@@ -27,3 +27,5 @@ python -m src.generate_features --data-dir "$DATA_DIR" --out "$FEATURES_PATH"
 python -m src.predict --features "$FEATURES_PATH" --model "$MODEL_PATH" --output "$OUTPUT_PATH"
 
 echo "== done: $OUTPUT_PATH =="
+echo ""
+echo "Live dashboard -> https://presage-two.vercel.app/"
