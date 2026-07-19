@@ -14,12 +14,7 @@
     },
     "build": {
       "inputs": [{ "step": "install" }],
-      "commands": [
-        "cd frontend && npm run build"
-      ]
+      "commands": ["cd frontend && npm run build"]
     }
-  },
-  "deploy": {
-    "startCommand": "/app/.venv/bin/python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT"
   }
 }
