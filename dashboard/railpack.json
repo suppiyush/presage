@@ -8,7 +8,7 @@
     "install": {
       "commands": [
         "python -m venv /app/.venv",
-        "/app/.venv/bin/pip install -r backend/requirements.txt",
+        "/app/.venv/bin/pip install -r /app/backend/requirements.txt",
         "cd frontend && npm install"
       ]
     },
